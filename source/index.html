@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Primary SEO -->
+  <title>Roblox RMU</title>
+    <style>
+        :root {
+            --roblox-blue: #00A2FF;
+            --roblox-dark-blue: #0073B7;
+            --roblox-light-blue: #E2F4FF;
+            --roblox-gray: #393B3D;
+            --roblox-light-gray: #F2F4F5;
+        }
+        
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: var(--roblox-light-gray);
+            color: var(--roblox-gray);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            color: var(--roblox-blue);
+        }
+        
+        h2 {
+            color: var(--roblox-dark-blue);
+            border-bottom: 2px solid var(--roblox-light-blue);
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        
+        .calculator-section {
+            margin-bottom: 30px;
+            background-color: var(--roblox-light-gray);
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .input-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .input-group label {
+            flex: 1;
+            font-weight: 600;
+        }
+        
+        .input-group input {
+            flex: 2;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .btn {
+            background-color: var(--roblox-blue);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: var(--roblox-dark-blue);
+        }
+        
+        .results {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 4px;
+            border-left: 4px solid var(--roblox-blue);
+        }
+        
+        .info-box {
+            background-color: var(--roblox-light-blue);
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: var(--roblox-blue);
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background-color: var(--roblox-light-gray);
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Roblox Physics Calculator</h1>
+            <p>Convert between real-world values and Roblox units for accurate physics simulations</p>
+        </header>
+
+        <div class="info-box">
+            <p><strong>Note:</strong> This calculator is based on official Roblox documentation. Use these conversions to create more realistic physics in your Roblox experiences.</p>
+        </div>
+
+        <!-- Unit conversions section -->
+        <h2>Unit conversions</h2>
+        <div class="calculator-section">
+            <p>Convert between Roblox's primary units and their metric counterparts.</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Unit</th>
+                        <th>Roblox</th>
+                        <th>Metric</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Time</td>
+                        <td>1 second</td>
+                        <td>1 second</td>
+                    </tr>
+                    <tr>
+                        <td>Length</td>
+                        <td>1 stud</td>
+                        <td>28 cm</td>
+                    </tr>
+                    <tr>
+                        <td>Mass</td>
+                        <td>1 RMU*</td>
+                        <td>21.952 kg</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>* RMU = Roblox Mass Unit</p>
+            
+            <h3>Derived Units</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Unit</th>
+                        <th>Metric</th>
+                        <th>Roblox</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Water Density</td>
+                        <td>1 g/cm³</td>
+                        <td>1 RMU/stud³</td>
+                    </tr>
+                    <tr>
+                        <td>Air Density (sea level)</td>
+                        <td>0.00129 g/cm³</td>
+                        <td>0.00129 RMU/stud³</td>
+                    </tr>
+                    <tr>
+                        <td>1 atmosphere</td>
+                        <td>101,325 Pa [kg/(m·s²)]</td>
+                        <td>1290 RMU/(stud·s²)</td>
+                    </tr>
+                    <tr>
+                        <td>Spring Stiffness</td>
+                        <td>1 N/m [kg/s²]</td>
+                        <td>0.0456 RMU/s²</td>
+                    </tr>
+                    <tr>
+                        <td>Spring Damping</td>
+                        <td>1 N·s/m [kg/s]</td>
+                        <td>0.0456 RMU/s</td>
+                    </tr>
+                    <tr>
+                        <td>Velocity</td>
+                        <td>1 m/s</td>
+                        <td>3.57 studs/s</td>
+                    </tr>
+                    <tr>
+                        <td>Force</td>
+                        <td>1 N [kg·m/s²]</td>
+                        <td>0.163 Rowtons [RMU·stud/s²]</td>
+                    </tr>
+                    <tr>
+                        <td>Torque</td>
+                        <td>1 N·m [kg·m²/s²]</td>
+                        <td>0.581 Rowton-studs [RMU·stud²/s²]</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Length Converter</h3>
+            <div class="input-group">
+                <label for="studs">Studs:</label>
+                <input type="number" id="studs" placeholder="Enter studs">
+                <button class="btn" onclick="convertLength('studs')">Convert</button>
+            </div>
+            <div class="input-group">
+                <label for="centimeters">Centimeters:</label>
+                <input type="number" id="centimeters" placeholder="Enter centimeters">
+                <button class="btn" onclick="convertLength('cm')">Convert</button>
+            </div>
+            <div class="input-group">
+                <label for="meters">Meters:</label>
+                <input type="number" id="meters" placeholder="Enter meters">
+                <button class="btn" onclick="convertLength('m')">Convert</button>
+            </div>
+            
+            <h3>Mass Converter</h3>
+            <div class="input-group">
+                <label for="rmu">Roblox Mass Units (RMU):</label>
+                <input type="number" id="rmu" placeholder="Enter RMU">
+                <button class="btn" onclick="convertMass('rmu')">Convert</button>
+            </div>
+            <div class="input-group">
+                <label for="kilograms">Kilograms:</label>
+                <input type="number" id="kilograms" placeholder="Enter kilograms">
+                <button class="btn" onclick="convertMass('kg')">Convert</button>
+            </div>
+        </div>
+
+        <!-- Importance of unit consistency section -->
+        <h2>Importance of unit consistency</h2>
+        <div class="calculator-section">
+            <p>Internally, the Roblox physics engine does not use unit conversions. You're free to define your own unit interpretations for studs (length) and RMUs (mass), but these should be used in a consistent manner throughout the experience.</p>
+            
+            <p>For example, if you decide that one stud equals one foot (30.483 cm), the unit density of water implies an RMU is equal to 62.4 lbs (28.3 kg):</p>
+            
+            <div class="info-box">
+                1 (g/cm³) × (30.48³ cm³/ft³) = 28,317 (g/ft³) × (0.00220462 lbs/g) = 62.4 (lbs/ft³) = 1 (RMU/stud³)
+            </div>
+            
+            <p>Overall, it's recommended that you use standard Roblox units because it makes an experience work as expected in all scenarios, such as compatibility with VR controls.</p>
+        </div>
+
+        <!-- Gravitational acceleration section -->
+        <h2>Gravitational acceleration</h2>
+        <div class="calculator-section">
+            <p>Convert between real-world gravity values and Roblox gravity settings.</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Preset</th>
+                        <th>Roblox</th>
+                        <th>Metric</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Classic (default)</td>
+                        <td>196.2 studs/s²</td>
+                        <td>54.963 m/s²</td>
+                    </tr>
+                    <tr>
+                        <td>Realistic (real-world)</td>
+                        <td>35 studs/s²</td>
+                        <td>9.8 m/s²</td>
+                    </tr>
+                    <tr>
+                        <td>Action</td>
+                        <td>75 studs/s²</td>
+                        <td>21 m/s²</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="input-group">
+                <label for="roblox-gravity">Roblox Gravity (studs/s²):</label>
+                <input type="number" id="roblox-gravity" placeholder="Enter Roblox gravity">
+                <button class="btn" onclick="convertGravity('roblox')">Convert</button>
+            </div>
+            <div class="input-group">
+                <label for="real-gravity">Real Gravity (m/s²):</label>
+                <input type="number" id="real-gravity" placeholder="Enter real gravity">
+                <button class="btn" onclick="convertGravity('real')">Convert</button>
+            </div>
+            <div class="results" id="gravity-result"></div>
+        </div>
+
+        <!-- Density Calculator -->
+        <h2>Density</h2>
+        <div class="calculator-section">
+            <p>Convert between real-world density values and Roblox density settings.</p>
+            
+            <p>In Roblox, density is measured in RMU/stud³. The density of water (1 g/cm³) is equal to 1 RMU/stud³.</p>
+            
+            <div class="input-group">
+                <label for="roblox-density">Roblox Density (RMU/stud³):</label>
+                <input type="number" id="roblox-density" placeholder="Enter Roblox density">
+                <button class="btn" onclick="convertDensity('roblox')">Convert</button>
+            </div>
+            <div class="input-group">
+                <label for="real-density">Real Density (g/cm³):</label>
+                <input type="number" id="real-density" placeholder="Enter real density">
+                <button class="btn" onclick="convertDensity('real')">Convert</button>
+            </div>
+            <div class="results" id="density-result"></div>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Minimum</th>
+                        <th>Maximum</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Density (RMU/stud³)</td>
+                        <td>0.0001</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>Friction</td>
+                        <td>0.0</td>
+                        <td>2.0</td>
+                    </tr>
+                    <tr>
+                        <td>Friction Weight</td>
+                        <td>0.0</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>Elasticity</td>
+                        <td>0.0</td>
+                        <td>1.0</td>
+                    </tr>
+                    <tr>
+                        <td>Elasticity Weight</td>
+                        <td>0.0</td>
+                        <td>100</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="info-box">
+                <p><strong>Note:</strong> Roblox places limits on physical properties as shown in the table above. Values outside these ranges will be clamped.</p>
+            </div>
+        </div>
+
+        <!-- Spring Stiffness and Damping Calculator -->
+        <h2>Spring Stiffness and Damping</h2>
+        <div class="calculator-section">
+            <p>Convert between real-world spring physics values and Roblox constraint settings.</p>
+            
+            <h3>Spring Stiffness</h3>
+            <div class="input-group">
+                <label for="real-stiffness">Real Stiffness (N/m):</label>
+                <input type="number" id="real-stiffness" placeholder="Enter real stiffness">
+                <button class="btn" onclick="convertStiffness('real')">Convert</button>
+            </div>
+            <div class="input-group">
+                <label for="roblox-stiffness">Roblox Stiffness (RMU/s²):</label>
+                <input type="number" id="roblox-stiffness" placeholder="Enter Roblox stiffness">
+                <button class="btn" onclick="convertStiffness('roblox')">Convert</button>
+            </div>
+            <div class="results" id="stiffness-result"></div>
+            
+            <h3>Spring Damping</h3>
+            <div class="input-group">
+                <label for="real-damping">Real Damping (N·s/m):</label>
+                <input type="number" id="real-damping" placeholder="Enter real damping">
+                <button class="btn" onclick="convertDamping('real')">Convert</button>
+            </div>
+            <div class="input-group">
+                <label for="roblox-damping">Roblox Damping (RMU/s):</label>
+                <input type="number" id="roblox-damping" placeholder="Enter Roblox damping">
+                <button class="btn" onclick="convertDamping('roblox')">Convert</button>
+            </div>
+            <div class="results" id="damping-result"></div>
+        </div>
+
+        <!-- Torque Calculator -->
+        <h2>Torque</h2>
+        <div class="calculator-section">
+            <p>Convert between real-world torque values and Roblox torque settings.</p>
+            
+            <div class="input-group">
+                <label for="real-torque">Real Torque (N·m):</label>
+                <input type="number" id="real-torque" placeholder="Enter real torque">
+                <button class="btn" onclick="convertTorque('real')">Convert</button>
+            </div>
+            <div class="input-group">
+                <label for="roblox-torque">Roblox Torque (Rowton-studs):</label>
+                <input type="number" id="roblox-torque" placeholder="Enter Roblox torque">
+                <button class="btn" onclick="convertTorque('roblox')">Convert</button>
+            </div>
+            <div class="results" id="torque-result"></div>
+        </div>
+
+        <!-- Force Calculator -->
+        <h2>Force</h2>
+        <div class="calculator-section">
+            <p>Convert between real-world force values and Roblox force settings.</p>
+            
+            <div class="input-group">
+                <label for="real-force">Real Force (N):</label>
+                <input type="number" id="real-force" placeholder="Enter real force">
+                <button class="btn" onclick="convertForce('real')">Convert</button>
+            </div>
+            <div class="input-group">
+                <label for="roblox-force">Roblox Force (Rowtons):</label>
+                <input type="number" id="roblox-force" placeholder="Enter Roblox force">
+                <button class="btn" onclick="convertForce('roblox')">Convert</button>
+            </div>
+            <div class="results" id="force-result"></div>
+        </div>
+
+        <!-- Velocity Calculator -->
+        <h2>Velocity</h2>
+        <div class="calculator-section">
+            <p>Convert between real-world velocity values and Roblox velocity settings.</p>
+            
+            <div class="input-group">
+                <label for="real-velocity">Real Velocity (m/s):</label>
+                <input type="number" id="real-velocity" placeholder="Enter real velocity">
+                <button class="btn" onclick="convertVelocity('real')">Convert</button>
+            </div>
+            <div class="input-group">
+                <label for="roblox-velocity">Roblox Velocity (studs/s):</label>
+                <input type="number" id="roblox-velocity" placeholder="Enter Roblox velocity">
+                <button class="btn" onclick="convertVelocity('roblox')">Convert</button>
+            </div>
+            <div class="results" id="velocity-result"></div>
+        </div>
+
+        <!-- Pressure Calculator -->
+        <h2>Pressure</h2>
+        <div class="calculator-section">
+            <p>Convert between real-world pressure values and Roblox pressure settings.</p>
+            
+            <div class="input-group">
+                <label for="real-pressure">Real Pressure (Pa):</label>
+                <input type="number" id="real-pressure" placeholder="Enter real pressure">
+                <button class="btn" onclick="convertPressure('real')">Convert</button>
+            </div>
+            <div class="input-group">
+                <label for="roblox-pressure">Roblox Pressure (RMU/(stud·s²)):</label>
+                <input type="number" id="roblox-pressure" placeholder="Enter Roblox pressure">
+                <button class="btn" onclick="convertPressure('roblox')">Convert</button>
+            </div>
+            <div class="results" id="pressure-result"></div>
+            
+            <div class="info-box">
+                <p><strong>Note:</strong> 1 atmosphere (101,325 Pa) is equal to 1290 RMU/(stud·s²) in Roblox.</p>
+            </div>
+        </div>
+
+        <footer>
+            <p>Based on <a href="https://create.roblox.com/docs/physics/units" target="_blank">Roblox Physics Documentation</a></p>
+			<p>Made by <a href="https://coroposws.com/" target="_blank">Coropos Web Services</a></p>
+          <!-- We ask that you please keep this since we are making this free and open source -->
+        </footer>
+    </div>
+
+    <script>
+        // Constants
+        const STUD_TO_CM = 28;
+        const STUD_TO_M = STUD_TO_CM / 100;
+        const RMU_TO_KG = 21.952;
+        const DENSITY_CONVERSION = 1; // 1 g/cm³ = 1 RMU/stud³
+        const GRAVITY_CONVERSION = 3.57; // 35 studs/s² = 9.8 m/s²
+        const STIFFNESS_CONVERSION = 0.0456; // 0.0456 RMU/s² = 1 N/m
+        const DAMPING_CONVERSION = 0.0456; // 0.0456 RMU/s = 1 N·s/m
+        const TORQUE_CONVERSION = 0.581; // 0.581 Rowton-studs = 1 N·m
+        const FORCE_CONVERSION = 0.163; // 0.163 Rowtons = 1 N
+        const VELOCITY_CONVERSION = 3.57; // 3.57 studs/s = 1 m/s
+        const PRESSURE_CONVERSION = 1290 / 101325; // 1290 RMU/(stud·s²) = 101325 Pa
+
+        // Length conversion
+        function convertLength(from) {
+            let studsValue = document.getElementById('studs');
+            let cmValue = document.getElementById('centimeters');
+            let mValue = document.getElementById('meters');
+            
+            if (from === 'studs') {
+                let studs = parseFloat(studsValue.value);
+                cmValue.value = (studs * STUD_TO_CM).toFixed(2);
+                mValue.value = (studs * STUD_TO_M).toFixed(4);
+            } else if (from === 'cm') {
+                let cm = parseFloat(cmValue.value);
+                studsValue.value = (cm / STUD_TO_CM).toFixed(4);
+                mValue.value = (cm / 100).toFixed(4);
+            } else if (from === 'm') {
+                let m = parseFloat(mValue.value);
+                studsValue.value = (m / STUD_TO_M).toFixed(4);
+                cmValue.value = (m * 100).toFixed(2);
+            }
+        }
+
+        // Mass conversion
+        function convertMass(from) {
+            let rmuValue = document.getElementById('rmu');
+            let kgValue = document.getElementById('kilograms');
+            
+            if (from === 'rmu') {
+                let rmu = parseFloat(rmuValue.value);
+                kgValue.value = (rmu * RMU_TO_KG).toFixed(3);
+            } else if (from === 'kg') {
+                let kg = parseFloat(kgValue.value);
+                rmuValue.value = (kg / RMU_TO_KG).toFixed(4);
+            }
+        }
+
+        // Gravity conversion
+        function convertGravity(from) {
+            let robloxGravityValue = document.getElementById('roblox-gravity');
+            let realGravityValue = document.getElementById('real-gravity');
+            let resultDiv = document.getElementById('gravity-result');
+            
+            if (from === 'roblox') {
+                let robloxGravity = parseFloat(robloxGravityValue.value);
+                let realGravity = robloxGravity / GRAVITY_CONVERSION;
+                realGravityValue.value = realGravity.toFixed(3);
+                
+                resultDiv.innerHTML = `
+                    <p><strong>${robloxGravity} studs/s²</strong> in Roblox is equal to <strong>${realGravity.toFixed(3)} m/s²</strong> in the real world.</p>
+                    <p>For reference: Classic gravity is 196.2 studs/s² or 54.963 m/s², and Realistic gravity is 35 studs/s² or 9.8 m/s².</p>
+                `;
+            } else if (from === 'real') {
+                let realGravity = parseFloat(realGravityValue.value);
+                let robloxGravity = realGravity * GRAVITY_CONVERSION;
+                robloxGravityValue.value = robloxGravity.toFixed(3);
+                
+                resultDiv.innerHTML = `
+                    <p><strong>${realGravity} m/s²</strong> in the real world is equal to <strong>${robloxGravity.toFixed(3)} studs/s²</strong> in Roblox.</p>
+                    <p>For reference: Classic gravity is 196.2 studs/s² or 54.963 m/s², and Realistic gravity is 35 studs/s² or 9.8 m/s².</p>
+                `;
+            }
+        }
+
+        // Density conversion
+        function convertDensity(from) {
+            let robloxDensityValue = document.getElementById('roblox-density');
+            let realDensityValue = document.getElementById('real-density');
+            let resultDiv = document.getElementById('density-result');
+            
+            if (from === 'roblox') {
+                let robloxDensity = parseFloat(robloxDensityValue.value);
+                let realDensity = robloxDensity / DENSITY_CONVERSION;
+                realDensityValue.value = realDensity.toFixed(4);
+                
+                let inRange = robloxDensity >= 0.0001 && robloxDensity <= 100;
+                
+                resultDiv.innerHTML = `
+                    <p><strong>${robloxDensity} RMU/stud³</strong> in Roblox is equal to <strong>${realDensity.toFixed(4)} g/cm³</strong> in the real world.</p>
+                    ${!inRange ? '<p style="color: red;"><strong>Warning:</strong> Roblox density values are clamped between 0.0001 and 100.</p>' : ''}
+                    <p>For reference: Water has a density of 1 g/cm³ or approximately 1 RMU/stud³.</p>
+                `;
+            } else if (from === 'real') {
+                let realDensity = parseFloat(realDensityValue.value);
+                let robloxDensity = realDensity * DENSITY_CONVERSION;
+                robloxDensityValue.value = robloxDensity.toFixed(4);
+                
+                let inRange = robloxDensity >= 0.0001 && robloxDensity <= 100;
+                
+                resultDiv.innerHTML = `
+                    <p><strong>${realDensity} g/cm³</strong> in the real world is equal to <strong>${robloxDensity.toFixed(4)} RMU/stud³</strong> in Roblox.</p>
+                    ${!inRange ? '<p style="color: red;"><strong>Warning:</strong> Roblox density values are clamped between 0.0001 and 100.</p>' : ''}
+                    <p>For reference: Water has a density of 1 g/cm³ or approximately 1 RMU/stud³.</p>
+                `;
+            }
+        }
+
+        // Stiffness conversion
+        function convertStiffness(from) {
+            let realStiffnessValue = document.getElementById('real-stiffness');
+            let robloxStiffnessValue = document.getElementById('roblox-stiffness');
+            let resultDiv = document.getElementById('stiffness-result');
+            
+            if (from === 'real') {
+                let realStiffness = parseFloat(realStiffnessValue.value);
+                let robloxStiffness = realStiffness * STIFFNESS_CONVERSION;
+                robloxStiffnessValue.value = robloxStiffness.toFixed(4);
+                
+                resultDiv.innerHTML = `
+                    <p><strong>${realStiffness} N/m</strong> in the real world is equal to <strong>${robloxStiffness.toFixed(4)} RMU/s²</strong> in Roblox.</p>
+                `;
+            } else if (from === 'roblox') {
+                let robloxStiffness = parseFloat(robloxStiffnessValue.value);
+                let realStiffness = robloxStiffness / STIFFNESS_CONVERSION;
+                realStiffnessValue.value = realStiffness.toFixed(4);
+                
+                resultDiv.innerHTML = `
+                    <p><strong>${robloxStiffness} RMU/s²</strong> in Roblox is equal to <strong>${realStiffness.toFixed(4)} N/m</strong> in the real world.</p>
+                `;
+            }
+        }
+
+        // Damping conversion
+        function convertDamping(from) {
+            let realDampingValue = document.getElementById('real-damping');
+            let robloxDampingValue = document.getElementById('roblox-damping');
+            let resultDiv = document.getElementById('damping-result');
+            
+            if (from === 'real') {
+                let realDamping = parseFloat(realDampingValue.value);
+                let robloxDamping = realDamping * DAMPING_CONVERSION;
+                robloxDampingValue.value = robloxDamping.toFixed(4);
+                
+                resultDiv.innerHTML = `
+                    <p><strong>${realDamping} N·s/m</strong> in the real world is equal to <strong>${robloxDamping.toFixed(4)} RMU/s</strong> in Roblox.</p>
+                `;
+            } else if (from === 'roblox') {
+                let robloxDamping = parseFloat(robloxDampingValue.value);
+                let realDamping = robloxDamping / DAMPING_CONVERSION;
+                realDampingValue.value = realDamping.toFixed(4);
+                
+                resultDiv.innerHTML = `
+                    <p><strong>${robloxDamping} RMU/s</strong> in Roblox is equal to <strong>${realDamping.toFixed(4)} N·s/m</strong> in the real world.</p>
+                `;
+            }
+        }
+
+        // Force conversion
+        function convertForce(from) {
+            let realForceValue = document.getElementById('real-force');
+            let robloxForceValue = document.getElementById('roblox-force');
+            let resultDiv = document.getElementById('force-result');
+            
+            if (from === 'real') {
+                let realForce = parseFloat(realForceValue.value);
+                let robloxForce = realForce * FORCE_CONVERSION;
+                robloxForceValue.value = robloxForce.toFixed(4);
+                
+                resultDiv.innerHTML = `
+                    <p><strong>${realForce} N</strong> in the real world is equal to <strong>${robloxForce.toFixed(4)} Rowtons</strong> in Roblox.</p>
+                `;
+            } else if (from === 'roblox') {
+                let robloxForce = parseFloat(robloxForceValue.value);
+                let realForce = robloxForce / FORCE_CONVERSION;
+                realForceValue.value = realForce.toFixed(4);
+                
+                resultDiv.innerHTML = `
+                    <p><strong>${robloxForce} Rowtons</strong> in Roblox is equal to <strong>${realForce.toFixed(4)} N</strong> in the real world.</p>
+                `;
+            }
+        }
+
+        // Velocity conversion
+        function convertVelocity(from) {
+            let realVelocityValue = document.getElementById('real-velocity');
+            let robloxVelocityValue = document.getElementById('roblox-velocity');
+            let resultDiv = document.getElementById('velocity-result');
+            
+            if (from === 'real') {
+                let realVelocity = parseFloat(realVelocityValue.value);
+                let robloxVelocity = realVelocity * VELOCITY_CONVERSION;
+                robloxVelocityValue.value = robloxVelocity.toFixed(4);
+                
+                resultDiv.innerHTML = `
+                    <p><strong>${realVelocity} m/s</strong> in the real world is equal to <strong>${robloxVelocity.toFixed(4)} studs/s</strong> in Roblox.</p>
+                `;
+            } else if (from === 'roblox') {
+                let robloxVelocity = parseFloat(robloxVelocityValue.value);
+                let realVelocity = robloxVelocity / VELOCITY_CONVERSION;
+                realVelocityValue.value = realVelocity.toFixed(4);
+                
+                resultDiv.innerHTML = `
+                    <p><strong>${robloxVelocity} studs/s</strong> in Roblox is equal to <strong>${realVelocity.toFixed(4)} m/s</strong> in the real world.</p>
+                `;
+            }
+        }
+        
+        // Torque conversion
+        function convertTorque(from) {
+            let realTorqueValue = document.getElementById('real-torque');
+            let robloxTorqueValue = document.getElementById('roblox-torque');
+            let resultDiv = document.getElementById('torque-result');
+            
+            if (from === 'real') {
+                let realTorque = parseFloat(realTorqueValue.value);
+                let robloxTorque = realTorque * TORQUE_CONVERSION;
+                robloxTorqueValue.value = robloxTorque.toFixed(4);
+                
+                resultDiv.innerHTML = `
+                    <p><strong>${realTorque} N·m</strong> in the real world is equal to <strong>${robloxTorque.toFixed(4)} Rowton-studs</strong> in Roblox.</p>
+                `;
+            } else if (from === 'roblox') {
+                let robloxTorque = parseFloat(robloxTorqueValue.value);
+                let realTorque = robloxTorque / TORQUE_CONVERSION;
+                realTorqueValue.value = realTorque.toFixed(4);
+                
+                resultDiv.innerHTML = `
+                    <p><strong>${robloxTorque} Rowton-studs</strong> in Roblox is equal to <strong>${realTorque.toFixed(4)} N·m</strong> in the real world.</p>
+                `;
+            }
+        }
+        
+        // Pressure conversion
+        function convertPressure(from) {
+            let realPressureValue = document.getElementById('real-pressure');
+            let robloxPressureValue = document.getElementById('roblox-pressure');
+            let resultDiv = document.getElementById('pressure-result');
+            
+            if (from === 'real') {
+                let realPressure = parseFloat(realPressureValue.value);
+                let robloxPressure = realPressure * PRESSURE_CONVERSION;
+                robloxPressureValue.value = robloxPressure.toFixed(6);
+                
+                resultDiv.innerHTML = `
+                    <p><strong>${realPressure} Pa</strong> in the real world is equal to <strong>${robloxPressure.toFixed(6)} RMU/(stud·s²)</strong> in Roblox.</p>
+                    <p>For reference: 1 atmosphere (101,325 Pa) is equal to 1290 RMU/(stud·s²) in Roblox.</p>
+                `;
+            } else if (from === 'roblox') {
+                let robloxPressure = parseFloat(robloxPressureValue.value);
+                let realPressure = robloxPressure / PRESSURE_CONVERSION;
+                realPressureValue.value = realPressure.toFixed(2);
+                
+                resultDiv.innerHTML = `
+                    <p><strong>${robloxPressure} RMU/(stud·s²)</strong> in Roblox is equal to <strong>${realPressure.toFixed(2)} Pa</strong> in the real world.</p>
+                    <p>For reference: 1 atmosphere (101,325 Pa) is equal to 1290 RMU/(stud·s²) in Roblox.</p>
+                `;
+            }
+        }
+
+        // Torque conversion
+        function convertTorque(from) {
+            let realTorqueValue = document.getElementById('real-torque');
+            let robloxTorqueValue = document.getElementById('roblox-torque');
+            let resultDiv = document.getElementById('torque-result');
+            
+            if (from === 'real') {
+                let realTorque = parseFloat(realTorqueValue.value);
+                let robloxTorque = realTorque * TORQUE_CONVERSION;
+                robloxTorqueValue.value = robloxTorque.toFixed(4);
+                
+                resultDiv.innerHTML = `
+                    <p><strong>${realTorque} N·m</strong> in the real world is equal to <strong>${robloxTorque.toFixed(4)} Rowton-studs</strong> in Roblox.</p>
+                `;
+            } else if (from === 'roblox') {
+                let robloxTorque = parseFloat(robloxTorqueValue.value);
+                let realTorque = robloxTorque / TORQUE_CONVERSION;
+                realTorqueValue.value = realTorque.toFixed(4);
+                
+                resultDiv.innerHTML = `
+                    <p><strong>${robloxTorque} Rowton-studs</strong> in Roblox is equal to <strong>${realTorque.toFixed(4)} N·m</strong> in the real world.</p>
+                `;
+            }
+        }
+        
+        // Pressure conversion
+        function convertPressure(from) {
+            let realPressureValue = document.getElementById('real-pressure');
+            let robloxPressureValue = document.getElementById('roblox-pressure');
+            let resultDiv = document.getElementById('pressure-result');
+            
+            const PRESSURE_CONVERSION = 1290 / 101325; // 1290 RMU/(stud·s²) = 101325 Pa
+            
+            if (from === 'real') {
+                let realPressure = parseFloat(realPressureValue.value);
+                let robloxPressure = realPressure * PRESSURE_CONVERSION;
+                robloxPressureValue.value = robloxPressure.toFixed(6);
+                
+                resultDiv.innerHTML = `
+                    <p><strong>${realPressure} Pa</strong> in the real world is equal to <strong>${robloxPressure.toFixed(6)} RMU/(stud·s²)</strong> in Roblox.</p>
+                    <p>For reference: 1 atmosphere (101,325 Pa) is equal to 1290 RMU/(stud·s²) in Roblox.</p>
+                `;
+            } else if (from === 'roblox') {
+                let robloxPressure = parseFloat(robloxPressureValue.value);
+                let realPressure = robloxPressure / PRESSURE_CONVERSION;
+                realPressureValue.value = realPressure.toFixed(2);
+                
+                resultDiv.innerHTML = `
+                    <p><strong>${robloxPressure} RMU/(stud·s²)</strong> in Roblox is equal to <strong>${realPressure.toFixed(2)} Pa</strong> in the real world.</p>
+                    <p>For reference: 1 atmosphere (101,325 Pa) is equal to 1290 RMU/(stud·s²) in Roblox.</p>
+                `;
+            }
+        
+            if (from === 'real') {
+                let realStiffness = parseFloat(realStiffnessValue.value);
+                let robloxStiffness = realStiffness * STIFFNESS_CONVERSION;
+                robloxStiffnessValue.value = robloxStiffness.toFixed(4);
+                
+                resultDiv.innerHTML = `
+                    <p><strong>${realStiffness} N/m</strong> in the real world is equal to <strong>${robloxStiffness.toFixed(4)}</strong> in Roblox.</p>
+                `;
+            } else if (from === 'roblox') {
+                let robloxStiffness = parseFloat(robloxStiffnessValue.value);
+                let realStiffness = robloxStiffness / STIFFNESS_CONVERSION;
+                realStiffnessValue.value = realStiffness.toFixed(4);
+                
+                resultDiv.innerHTML = `
+                    <p><strong>${robloxStiffness}</strong> in Roblox is equal to <strong>${realStiffness.toFixed(4)} N/m</strong> in the real world.</p>
+                `;
+            }
+        }
+
+        // Damping conversion
+        function convertDamping(from) {
+            let realDampingValue = document.getElementById('real-damping');
+            let robloxDampingValue = document.getElementById('roblox-damping');
+            let resultDiv = document.getElementById('damping-result');
+            
+            if (from === 'real') {
+                let realDamping = parseFloat(realDampingValue.value);
+                let robloxDamping = realDamping * DAMPING_CONVERSION;
+                robloxDampingValue.value = robloxDamping.toFixed(4);
+                
+                resultDiv.innerHTML = `
+                    <p><strong>${realDamping} N·s/m</strong> in the real world is equal to <strong>${robloxDamping.toFixed(4)}</strong> in Roblox.</p>
+                `;
+            } else if (from === 'roblox') {
+                let robloxDamping = parseFloat(robloxDampingValue.value);
+                let realDamping = robloxDamping / DAMPING_CONVERSION;
+                realDampingValue.value = realDamping.toFixed(4);
+                
+                resultDiv.innerHTML = `
+                    <p><strong>${robloxDamping}</strong> in Roblox is equal to <strong>${realDamping.toFixed(4)} N·s/m</strong> in the real world.</p>
+                `;
+            }
+        }
+
+        // Torque conversion
+        function convertTorque(from) {
+            let realTorqueValue = document.getElementById('real-torque');
+            let robloxTorqueValue = document.getElementById('roblox-torque');
+            let resultDiv = document.getElementById('torque-result');
+            
+            if (from === 'real') {
+                let realTorque = parseFloat(realTorqueValue.value);
+                let robloxTorque = realTorque * TORQUE_CONVERSION;
+                robloxTorqueValue.value = robloxTorque.toFixed(4);
+                
+                resultDiv.innerHTML = `
+                    <p><strong>${realTorque} N·m</strong> in the real world is equal to <strong>${robloxTorque.toFixed(4)}</strong> in Roblox.</p>
+                `;
+            } else if (from === 'roblox') {
+                let robloxTorque = parseFloat(robloxTorqueValue.value);
+                let realTorque = robloxTorque / TORQUE_CONVERSION;
+                realTorqueValue.value = realTorque.toFixed(4);
+                
+                resultDiv.innerHTML = `
+                    <p><strong>${robloxTorque}</strong> in Roblox is equal to <strong>${realTorque.toFixed(4)} N·m</strong> in the real world.</p>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
